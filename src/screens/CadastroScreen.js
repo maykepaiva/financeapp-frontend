@@ -1,0 +1,78 @@
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import api from "../services/api";
+
+const CadastroScreen = ({ navigation }) => {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
+
+  const handleCadastro = async () => {
+    try {
+      await api.post("/usuarios/cadastrar", {
+        nome,
+        email,
+        senha: password,
+      });
+  
+      setSuccess("Cadastro realizado com sucesso!");
+      setError(null);
+  
+      setTimeout(() => navigation.navigate("Login"), 2000);
+    } catch (err) {
+      setError("Erro ao cadastrar. Verifique os dados e tente novamente.");
+      setSuccess(null);
+    }
+  };
+  
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Criar Conta</Text>
+      {error && <Text style={styles.error}>{error}</Text>}
+      {success && <Text style={styles.success}>{success}</Text>}
+      <TextInput
+        style={styles.input}
+        placeholder="Nome"
+        value={nome}
+        onChangeText={setNome}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="E-mail"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Senha"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
+      <TouchableOpacity style={styles.button} onPress={handleCadastro}>
+        <Text style={styles.buttonText}>Cadastrar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("Login")}> 
+        <Text style={styles.link}>Já tem uma conta? Faça login</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#f4f4f4" },
+  title: { fontSize: 24, fontWeight: "bold", color: "#333", marginBottom: 20 },
+  input: { width: "80%", height: 50, backgroundColor: "#fff", marginVertical: 10, padding: 10, borderRadius: 8 },
+  button: { width: "80%", height: 50, backgroundColor: "#007bff", justifyContent: "center", alignItems: "center", borderRadius: 8 },
+  buttonText: { color: "#fff", fontSize: 18, fontWeight: "bold" },
+  error: { color: "red", marginBottom: 10 },
+  success: { color: "green", marginBottom: 10 },
+  link: { color: "#007bff", marginTop: 10 },
+});
+
+export default CadastroScreen;
