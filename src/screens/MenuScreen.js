@@ -7,7 +7,7 @@ const MenuScreen = ({ navigation }) => {
     { icon: <Ionicons name="cash-outline" size={24} color="#00BFFF" />, label: "Receitas", screen: "OpcoesReceitas" },
     { icon: <Ionicons name="card-outline" size={24} color="#00BFFF" />, label: "Despesas", screen: "OpcoesDespesas" },
     { icon: <MaterialCommunityIcons name="target" size={24} color="#00BFFF" />, label: "Metas Financeiras", screen: "OpcoesMetas" },
-    { icon: <Ionicons name="card-outline" size={24} color="#00BFFF" />, label: "Investimento", screen: "OpcoesInvestimentos" },
+    { icon: <Ionicons name="cash-outline" size={24} color="#00BFFF" />, label: "Investimento", screen: "OpcoesInvestimentos" },
     { icon: <FontAwesome5 name="chart-line" size={22} color="#00BFFF" />, label: "Relatórios", screen: "Relatorio" },
     { icon: <Ionicons name="log-out-outline" size={24} color="#666" />, label: "Sair", screen: "Login" },
   ];
