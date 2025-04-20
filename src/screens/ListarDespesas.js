@@ -56,6 +56,11 @@ const ListaDespesas = () => {
       Alert.alert('Erro ao remover despesa');
     }
   };
+  const formatDate = (dataStr) => {
+    if (!dataStr) return '';
+    const [ano, mes, dia] = dataStr.split('-');
+    return `${dia}/${mes}/${ano}`;
+  };
 
   useEffect(() => {
     carregarDespesas();
@@ -65,7 +70,7 @@ const ListaDespesas = () => {
     <View style={styles.card}>
       <Text style={styles.descricao}>{item.descricao}</Text>
       <Text>Valor: R$ {item.valor.toFixed(2)}</Text>
-      <Text>Data de Vencimento: {new Date(item.dataPagamento).toLocaleDateString()}</Text>
+      <Text>Data de Vencimento: {formatDate(item.dataPagamento)}</Text>
       <TouchableOpacity onPress={() => confirmarRemocao(item.id)}>
         <Text style={styles.remover}>Remover</Text>
       </TouchableOpacity>
