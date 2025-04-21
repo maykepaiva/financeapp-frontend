@@ -12,10 +12,8 @@ const LoginScreen = ({ navigation }) => {
     try {
       const response = await api.post("/usuarios/login", { email, senha: password });
 
-      // Salva o token para manter o usuário logado
       await AsyncStorage.setItem("token", response.data);
 
-      // Navega para o Dashboard
       navigation.navigate("Menu");
     } catch (err) {
       setError("E-mail ou senha incorretos");

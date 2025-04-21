@@ -91,8 +91,8 @@ const RelatorioScreen = () => {
             }
           ]
         }}
-        width={screenWidth - 64} // margens laterais
-        height={260}             // altura maior
+        width={screenWidth - 64} 
+        height={260}             
         fromZero
         yAxisLabel="R$ "
         chartConfig={{
