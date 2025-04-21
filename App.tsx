@@ -3,8 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "./src/screens/LoginScreen";
 import CadastroScreen from "./src/screens/CadastroScreen";
-import DashboardScreen from "./src/screens/DashboardScreen";
-import ReceitasDespesasScreen from "./src/screens/ReceitasDespesasScreen";
 import DetalhesFinanceirosScreen from "./src/screens/DetalhesFinanceiros";
 import MenuScreen from "./src/screens/MenuScreen";
 import OpcoesMetas from "./src/screens/OpcoesMetasScreen";
@@ -30,9 +28,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Cadastro" component={CadastroScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="Dashboard" component={DashboardScreen} />
         <Stack.Screen name="Menu" component={MenuScreen} />
-        <Stack.Screen name="ReceitasDespesas" component={ReceitasDespesasScreen} /> 
         <Stack.Screen name="DetalhesFinanceiros" component={DetalhesFinanceirosScreen} /> 
         <Stack.Screen name="OpcoesMetas" component={OpcoesMetas} /> 
         <Stack.Screen name="ListaMetas" component={ListaMetasScreen} /> 

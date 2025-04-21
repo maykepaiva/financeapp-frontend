@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons'; // use qualquer lib de ícones
+import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from '@expo/vector-icons'; 
 
 const MenuScreen = ({ navigation }) => {
   const menuItems = [
